@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment implements OnDialogCloseListener {
         super.onViewCreated(view, savedInstanceState);
         myDB = new DataBaseHelper(HomeFragment.this.requireContext());
         mList = new ArrayList<>();
-        adapter = new TaskAdapter(myDB,HomeFragment.this.requireContext());
+        adapter = new TaskAdapter(myDB,HomeFragment.this.requireContext(),getChildFragmentManager());
         startAutoRefresh();
         binding.recyclerview.setHasFixedSize(true);
         binding.recyclerview.setLayoutManager(new LinearLayoutManager(HomeFragment.this.requireContext()));

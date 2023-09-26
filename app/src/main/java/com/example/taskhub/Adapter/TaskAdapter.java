@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.taskhub.AddNewTaskActivity;
@@ -23,11 +24,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
     private List<ToDoModel> mList;
     private Context context;
     private DataBaseHelper myDatabase;
+    private FragmentManager fragmentManager;
 
 
-    public TaskAdapter(DataBaseHelper myDatabase, Context fragment){
+    public TaskAdapter(DataBaseHelper myDatabase, Context fragment, FragmentManager fragmentManager){
         this.context = fragment;
         this.myDatabase = myDatabase;
+        this.fragmentManager = fragmentManager;
     }
 
 
@@ -90,7 +93,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
 
             AddNewTaskActivity task = new AddNewTaskActivity();
             task.setArguments(bundle);
-            task.show(task.getChildFragmentManager(), task.getTag());
+            task.show(fragmentManager, task.getTag());
     }
     //make the status boolean
     public boolean toBoolean(int number){
